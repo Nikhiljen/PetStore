@@ -8,8 +8,10 @@ api\utilities\propertiesFile.class
 api\utilities\XLUtilities1.class
 api\tests\userTest.class
 api\endPoints\petEndpoints.class
+api\utilities\Credentials.class
 api\endPoints\routes.class
 api\endPoints\userEndpoints.class
 api\payLoad\User.class
 api\endPoints\userEndpoints2.class
 api\utilities\XLUtilities1$1.class
+api\utilities\SetUpData.class

@@ -2,6 +2,8 @@ package api.tests;
 
 
 import org.testng.Assert;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 
@@ -15,6 +17,11 @@ import io.restassured.response.Response;
 public class userTest1 {
 	SetUpData data;
 	
+	
+	@BeforeMethod
+	public void setup() {
+	    data = new SetUpData();
+	}
 	@Test(priority=1, dataProvider = "newUserData", dataProviderClass= DataProviders1.class)
 	public void test_creatUserusingDataProvider(String userID, String username, String fname, String lname, String email, String pwd, String MobileNumber) {
 		
@@ -26,29 +33,35 @@ public class userTest1 {
 		
 	}
 	
-	@Test(priority=2, dataProvider = "UserName", dataProviderClass= DataProviders1.class)
+	@Test(priority=2, dataProvider = "UserName", dataProviderClass= DataProviders1.class, dependsOnMethods= {"test_creatUserusingDataProvider"})
 	public void test_getUser(String userName) {
 		Response response = userEndpoints2.readUser(userName);
-		response.then().statusCode(200);
 		
 		Assert.assertEquals(response.getStatusCode(), 200);
 	}
 	
 	
-	@Test(priority=3, dataProvider = "UserName", dataProviderClass= DataProviders1.class)
+	@Test(priority=3, dataProvider = "UserName", dataProviderClass= DataProviders1.class,dependsOnMethods= {"test_creatUserusingDataProvider"})
 	public void test_deleteUser(String userName) {
 		Response response = userEndpoints2.deleteUser(userName);
-		response.then().statusCode(200);
+		
 		Assert.assertEquals(response.getStatusCode(), 200);
 	}
 	
-	@Test
+	@Test(priority=4)
 	public void test_loginWithValidUser() {
 		Credentials credentials =  SetUpData.createTestCredentials();
 		String username = credentials.getUsername();
 		String password = credentials.getPassword();
 		Response response = userEndpoints2.loginWithValidUser(username, password);
-		response.then().statusCode(200);
+		
+		Assert.assertEquals(response.getStatusCode(), 200);
+	}
+	
+	@Test(priority=5,dependsOnMethods= {"test_loginWithValidUser"})
+	public void test_logoutWithValidUser() {
+		Response response = userEndpoints2.logoutFromForm();
+		
 		Assert.assertEquals(response.getStatusCode(), 200);
 	}
 }

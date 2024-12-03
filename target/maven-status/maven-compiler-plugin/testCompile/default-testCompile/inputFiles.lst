@@ -6,9 +6,11 @@ D:\RsetAssured_project\PetStore\src\test\java\api\endPoints\userEndpoints2.java
 D:\RsetAssured_project\PetStore\src\test\java\api\payLoad\User.java
 D:\RsetAssured_project\PetStore\src\test\java\api\tests\userTest.java
 D:\RsetAssured_project\PetStore\src\test\java\api\tests\userTest1.java
+D:\RsetAssured_project\PetStore\src\test\java\api\utilities\Credentials.java
 D:\RsetAssured_project\PetStore\src\test\java\api\utilities\DataProviders.java
 D:\RsetAssured_project\PetStore\src\test\java\api\utilities\DataProviders1.java
 D:\RsetAssured_project\PetStore\src\test\java\api\utilities\ExtentReportManager.java
 D:\RsetAssured_project\PetStore\src\test\java\api\utilities\propertiesFile.java
+D:\RsetAssured_project\PetStore\src\test\java\api\utilities\SetUpData.java
 D:\RsetAssured_project\PetStore\src\test\java\api\utilities\XLUtilities.java
 D:\RsetAssured_project\PetStore\src\test\java\api\utilities\XLUtilities1.java
