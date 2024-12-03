@@ -9,33 +9,33 @@ import io.restassured.response.Response;
 
 public class userEndpoints2 {
 	
-	private static String baseUrl =  propertiesFile.getProperty("base_url");
+	private static String base_User_url =  propertiesFile.getProperty("base_User_url");
 	// Create user end point - POST request
 	
 	public static Response createUser(User payload) {
 		Response response = given().contentType(ContentType.JSON).accept(ContentType.JSON).body(payload).when()
-				.post(baseUrl);
+				.post(base_User_url);
 		return response;
 	}
 
 	// Read user end point - GET request
 	public static Response readUser(String userName) {
 		Response response = given().pathParam("username", userName).when()
-				.get(baseUrl+"/{username}");
+				.get(base_User_url+"/{username}");
 		return response;
 	}
 
 	// Update user end point - PUT request
 	public static Response updateUser(String userName, User payload) {
 		Response response = given().contentType(ContentType.JSON).accept(ContentType.JSON).body(payload)
-				.pathParam("username", userName).when().put(baseUrl+"/{username}");
+				.pathParam("username", userName).when().put(base_User_url+"/{username}");
 		return response;
 	}
 
 	// Delete user end point - DELETE request
 	public static Response deleteUser(String userName) {
 		Response response = given().pathParam("username", userName).when()
-				.delete(baseUrl+"/{username}");
+				.delete(base_User_url+"/{username}");
 		return response;
 	}
 	public static Response loginWithValidUser(String userName, String password) {
@@ -44,7 +44,7 @@ public class userEndpoints2 {
 				.pathParam("LoginPath", loginPath)
 				.queryParam("username", userName) // Pass username as query parameter
 		        .queryParam("password", password) // Pass password as query parameter.when()
-				.get(baseUrl+"/{LoginPath}");
+				.get(base_User_url+"/{LoginPath}");
 		return response;
 	}
 	
@@ -52,7 +52,7 @@ public class userEndpoints2 {
 		String logoutPath = "logout";
 		Response response = given()
 				.pathParam("LogoutPath", logoutPath)
-				.get(baseUrl+"/{LogoutPath}");
+				.get(base_User_url+"/{LogoutPath}");
 		return response;
 	}
 }
