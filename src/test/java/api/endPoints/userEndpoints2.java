@@ -35,4 +35,14 @@ public class userEndpoints2 {
 				.delete(propertiesFile.getProperty("user_delete_url"));
 		return response;
 	}
+	public static Response loginWithValidUser(String userName, String password) {
+		String baseUrl = propertiesFile.getProperty("user_logine_url");
+	    String loginPath = "login";
+		Response response = given()
+				.pathParam("LoginPath", loginPath)
+				.queryParam("username", userName) // Pass username as query parameter
+		        .queryParam("password", password) // Pass password as query parameter.when()
+				.get(baseUrl+"/{LoginPath}");
+		return response;
+	}
 }

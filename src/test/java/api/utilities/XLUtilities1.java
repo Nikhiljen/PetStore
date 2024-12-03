@@ -1,7 +1,7 @@
 package api.utilities;
 
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
+
 import java.io.FileOutputStream;
 import java.io.IOException;
 
@@ -21,12 +21,14 @@ public class XLUtilities1 {
 	public XSSFRow row;
 	public XSSFCell cell;
 	public CellStyle style;
-	String path;
+	public String path;
 
 	public XLUtilities1(String path) {
 		this.path = path;
 	}
-
+	
+	
+	//Get Multiple row and column
 	@SuppressWarnings("unused")
 	public Object[][] MultipleDataReadFromExcell(String sheetName) {
 
@@ -72,16 +74,14 @@ public class XLUtilities1 {
 				}
 			}
 
-		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return data;
 	}
-
+	
+	//get Single Column Data
 	public Object[] SingleColumnDataReadFromExcel(String sheetName, int columnIndex) {
 		Object[] data = null;
 		try (FileInputStream fi = new FileInputStream(path); XSSFWorkbook workbook = new XSSFWorkbook(fi)) {
@@ -109,12 +109,9 @@ public class XLUtilities1 {
 				}
 			}
 
-		} catch (FileNotFoundException e) {
+		} catch (IOException e ) {
 			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-
+			}
 		return data;
 	}
 }
