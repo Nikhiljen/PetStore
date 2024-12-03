@@ -34,11 +34,10 @@ Project Structure
     │   │   │   │   ├── endPoints       # REST API endpoint methods
     │   │   │   │   ├── payLoad         # POJO classes for request bodies
     │   │   │   │   ├── tests            # TestNG test cases
-                    ├── utilities       # Utility classes (e.g., property loader)
-    
-    │   │   ├── test
-    │   │   │   ├── resources
-    │   │   │   │   ├── routes.properties
+    │   │   │   │   ├── utilities       # Utility classes (e.g., property loader)
+    │   │   ├── resources    
+    │   │   |   │   ├── routes.properties
+    │   │   │   │   
     │   │   │   │      
     │   │   │   │   
     ├──Logs
@@ -152,4 +151,4 @@ Contributing
       Open a Pull Request.
 
 Contact
-For questions or feedback, please open an issue .
+For questions or feedback, please open an issue.
