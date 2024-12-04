@@ -2,8 +2,8 @@ package api.utilities;
 
 import org.testng.annotations.DataProvider;
 
-public class DataProviders1 {
-	@DataProvider(name = "newUserData")
+public class StoreDataProvider {
+	@DataProvider(name = "StoreData")
 	public Object[][] getAllData() {
 	    Object[][] apiData = null;
 	    
@@ -12,7 +12,7 @@ public class DataProviders1 {
 	        XLUtilities1 xl = new XLUtilities1(path);
 	        
 	     // Exclude header row
-	        apiData = xl.MultipleDataReadFromExcell("UserData"); // Fetch data
+	        apiData = xl.MultipleDataReadFromExcell("StoreData"); // Fetch data
 	        
 	    } catch (Exception e) {
 	        e.printStackTrace();
@@ -20,21 +20,21 @@ public class DataProviders1 {
 	    }
 	    return apiData;
 }
-	@DataProvider(name = "UserName")
-	public Object[] getUserNames() {
-	    Object[] usernameData = null;
+	@DataProvider(name = "OrderID")
+	public Object[] getOrderID() {
+	    Object[] orderIDdata = null;
 	    try {
 	        String path = System.getProperty("user.dir") + "//testData//UserData2.xlsx";
 	        XLUtilities1 xl = new XLUtilities1(path);
 
-	        // Column index for the User name column (0 for first column)
-	        int columnIndex = 1;
+	        // Column index for the Id column (0 for first column)
+	        int columnIndex = 0;
 	        
-	        usernameData = xl.SingleColumnDataReadFromExcel("UserData", columnIndex); // Fetch single column data
+	        orderIDdata = xl.SingleColumnDataReadFromExcel("OrderId", columnIndex); // Fetch single column data
 	    } catch (Exception e) {
 	        e.printStackTrace();
-	        throw new RuntimeException("Failed to load data from Excel for 'UserName'.");
+	        throw new RuntimeException("Failed to load data from Excel for 'orderId'.");
 	    }
-	    return usernameData;
+	    return orderIDdata;
 	}
 }

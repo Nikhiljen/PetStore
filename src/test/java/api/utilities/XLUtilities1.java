@@ -100,16 +100,25 @@ public class XLUtilities1 {
 					continue; // Skip empty rows
 				}
 
-				XSSFCell cell = row.getCell(columnIndex); // Read data from the specified column index
-				if (cell != null) {
-						data[i - 1] = cell.getStringCellValue();
-	
-				} else {
-					data[i - 1] = ""; // Handle case where cell is empty
-				}
-			}
-
-		} catch (IOException e ) {
+				 XSSFCell cell = row.getCell(columnIndex); // Read data from the specified column index
+		            if (cell != null) {
+		                switch (cell.getCellType()) {
+		                    case STRING:
+		                        data[i - 1] = cell.getStringCellValue();
+		                        break;
+		                    case NUMERIC:
+		                        // Convert numeric value to String or leave it as is based on the requirement
+		                        data[i - 1] = (int) cell.getNumericCellValue();
+		                        break;
+		                    case BLANK:
+		                        data[i - 1] = ""; // Handle blank cells
+		                        break;
+		                    default:
+		                        throw new IllegalArgumentException("Unsupported cell type: " + cell.getCellType());
+		                }
+		            }
+		        }
+			} catch (IOException e ) {
 			e.printStackTrace();
 			}
 		return data;

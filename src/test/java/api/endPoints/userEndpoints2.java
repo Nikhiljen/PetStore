@@ -13,14 +13,19 @@ public class userEndpoints2 {
 	// Create user end point - POST request
 	
 	public static Response createUser(User payload) {
-		Response response = given().contentType(ContentType.JSON).accept(ContentType.JSON).body(payload).when()
+		Response response = given()
+				.contentType(ContentType.JSON)
+				.accept(ContentType.JSON)
+				.body(payload).when()
 				.post(base_User_url);
 		return response;
 	}
 
 	// Read user end point - GET request
 	public static Response readUser(String userName) {
-		Response response = given().pathParam("username", userName).when()
+		Response response = given()
+				.pathParam("username", userName)
+				.when()
 				.get(base_User_url+"/{username}");
 		return response;
 	}
